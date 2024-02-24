@@ -77,11 +77,11 @@
                             <td>{{ productItem.title }}</td>
                             <td>
                                 <div class="h5" v-if="productItem.origin_price === productItem.price">
-                                    {{ productItem.price }} 元
+                                   $ {{ thousand(productItem.price) }} 元
                                 </div>
                                 <div v-else>
-                                    <del class="h6">原價 {{ productItem.origin_price }} 元</del>
-                                    <div class="h5">現在只要 {{ productItem.price }} 元</div>
+                                    <del class="h6">原價 $ {{ thousand(productItem.origin_price) }} 元</del>
+                                    <div class="h5">現在只要 $ {{ thousand(productItem.price) }} 元</div>
                                 </div>
                             </td>
                             <td>
@@ -142,12 +142,12 @@
                             </td>
                             <td>
                                 <div class="input-group input-group-sm">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group my-3">
                                         <!-- <input type="number" class="form-control"
                                             min="1" v-model="cartItem.qty" @change="changeCartQty(cartItem, cartItem.qty)" :disabled="cartItem.id === status.carteQtyLoading"
                                             > -->
                                         <!-- <span class="input-group-text" id="basic-addon2"
-                            >{{  }}</span -->
+                                            >{{  }}</span -->
 
                                         <button class="btn btn-outline-primary" type="button"
                                             :disabled="cartItem.qty===1" v-if="cartItem.qty > 1"
@@ -165,10 +165,10 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>{{cartItem.product.price}}</td>
+                            <td>$ {{ thousand(cartItem.product.price)}}</td>
                             <td class="text-end">
                                 <!-- <small class="text-success">折扣價：</small> -->
-                                {{ cartItem.total }}
+                                $ {{ thousand(cartItem.total) }}
                             </td>
                         </tr>
 
@@ -176,7 +176,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="4" class="text-end">總計</td>
-                            <td class="text-end">{{ carts.final_total }}</td>
+                            <td class="text-end">$ {{ thousand(carts.final_total) }}</td>
                         </tr>
                         <tr>
                             <td colspan="4" class="text-end text-success">折扣價</td>

@@ -93,6 +93,12 @@ const app = createApp({
       this.tempProduct = singleProduct;
       this.$refs.userModal.open();
     },
+    thousand (data) {
+      if (data !== undefined) {
+        data = data.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+      }
+      return data;
+    },
     addToCart(product_id, qty = 1) {
       const order = {
         product_id,
